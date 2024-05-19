@@ -1,16 +1,19 @@
 package sistemacofrinho;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 public abstract class Moeda {
 	private double valor;
 	private String nomeMoeda;
 	private String simboloMoeda;
-	
-	public Moeda(double valor, String nomeMoeda, String simboloMoeda) {
+	private List<Double> valoresDeMoedaValidos;
+
+	public Moeda(double valor, String nomeMoeda, String simboloMoeda, List<Double> valoresDeMoedaValidos) {
 		this.valor = valor;
 		this.nomeMoeda = nomeMoeda;
 		this.simboloMoeda = simboloMoeda;
+		this.valoresDeMoedaValidos = valoresDeMoedaValidos;
 	}
 	
 	public double getValor() {
@@ -36,6 +39,10 @@ public abstract class Moeda {
 	public void setSimboloMoeda(String simboloMoeda) {
 		this.simboloMoeda = simboloMoeda;
 	}
+	
+	public List<Double> getValoresDeMoedaValidos() {
+		return valoresDeMoedaValidos;
+	}
 
 	public double retornaValorArredondado() {
 		double valor = this.getValor();
@@ -48,8 +55,9 @@ public abstract class Moeda {
 		return this.getSimboloMoeda() + this.getValor();
 	};
 	
-	
-	
+	public Boolean verificaValorValido() {
+		return this.getValoresDeMoedaValidos().contains(this.getValor());
+	};
 	
 	public abstract Moeda converter(String paraQualMoedaSeraConvertida);
 	

@@ -1,8 +1,10 @@
 package sistemacofrinho;
 
+import java.util.Arrays;
+
 public class Real extends Moeda {
 	public Real(double valor) {
-		super(valor, "Real", "R$");
+		super(valor, "Real", "R$", Arrays.asList(0.01, 0.05, 0.10, 0.25, 0.50, 1.00));
 	}
 
 	private static final double TAXA_CAMBIO_REAL_PARA_DOLAR = 0.19591;
@@ -18,7 +20,6 @@ public class Real extends Moeda {
 		}
 		else 
 			return this;
-		
 	}
 
 }

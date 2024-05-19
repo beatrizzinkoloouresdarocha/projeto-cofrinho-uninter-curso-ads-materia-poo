@@ -1,8 +1,10 @@
 package sistemacofrinho;
 
+import java.util.Arrays;
+
 public class Dolar extends Moeda {
 	public Dolar(double valor) {
-		super(valor, "Dólar", "USD");
+		super(valor, "Dólar", "USD", Arrays.asList(0.01, 0.05, 0.10, 0.25, 1.00));
 	}
 
 	private static final double TAXA_CAMBIO_DOLAR_PARA_EURO = 0.92;
