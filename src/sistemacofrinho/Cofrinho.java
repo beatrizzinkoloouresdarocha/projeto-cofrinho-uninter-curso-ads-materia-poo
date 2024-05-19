@@ -62,30 +62,59 @@ public class Cofrinho {
 		return listaMoedas;
 	}
 	
-	public void adicionar(Moeda moeda) {
+	public void operacaoComMoedas(Moeda moeda, String operacao) {
 		String nomeMoeda = moeda.getNomeMoeda();
 		if (nomeMoeda == "Dólar") {
-//			this.listaMoedasDolar.add((Dolar) moeda);
+			Dolar totalDolar = this.getTotalMoedasDolar();
+			Double valorTotalDolar = totalDolar.getValor();
+			if (operacao == "adicionar") { 
+				valorTotalDolar += moeda.getValor();
+			} 
+			else {
+				valorTotalDolar -= moeda.getValor();
+			}
+			Dolar novoTotalDolar = new Dolar(valorTotalDolar);
+			this.setTotalMoedasDolar(novoTotalDolar);
 		}
 		else if (nomeMoeda == "Euro") {
-//			this.listaMoedasEuro.add((Euro) moeda);
+			Euro totalEuro = this.getTotalMoedasEuro();
+			Double valorTotalEuro = totalEuro.getValor();
+			if (operacao == "adicionar") { 
+				valorTotalEuro += moeda.getValor();
+			} 
+			else {
+				valorTotalEuro -= moeda.getValor();
+			}
+			Euro novoTotalEuro = new Euro(valorTotalEuro);
+			this.setTotalMoedasEuro(novoTotalEuro);
 		}
 		else {
-//			this.listaMoedasReal.add((Real) moeda);
+			Real totalReal = this.getTotalMoedasReal();
+			Double valorTotalReal = totalReal.getValor();
+			if (operacao == "adicionar") { 
+				valorTotalReal += moeda.getValor();
+			} 
+			else {
+				valorTotalReal -= moeda.getValor();
+			}
+			Real novoTotalReal = new Real(valorTotalReal);
+			this.setTotalMoedasReal(novoTotalReal);
 		}
-		
-		listaMoedas.add(moeda);
+	}
+	
+	public void adicionar(Moeda moeda) {
+		this.operacaoComMoedas(moeda, "adicionar");
 	}
 	
 	public void remover(Moeda moeda) {
-//		listaMoedas.remove
+		this.operacaoComMoedas(moeda, "remover");
 	}
 	
 	public String listagemMoedas() {
 //		
 	}
 	
-	public double totalConvertido() {
+	public double totalConvertido(String paraQualMoeda) {
 		
 	}
 }
