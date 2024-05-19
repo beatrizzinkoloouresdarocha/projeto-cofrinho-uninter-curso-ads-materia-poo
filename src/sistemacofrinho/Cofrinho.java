@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 
 public class Cofrinho {
 	private ArrayList<Moeda> listaMoedas = new ArrayList<Moeda>();
-	private Double totalConvertidoParaDolar;
-	private Double totalConvertidoParaEuro;
-	private Double totalConvertidoParaReal;
 
 	public ArrayList<Moeda> getListaMoedas() {
 		return listaMoedas;
@@ -69,7 +66,10 @@ public class Cofrinho {
 		return stringMoedasAgrupadasPorNomeValor.toString();
 	}
 	
-//	public double totalConvertido(String paraQualMoeda) {
-//		
-//	}
+	public Double totalConvertido() {
+		final double[] total = {0};
+		listaMoedas = this.getListaMoedas();
+		listaMoedas.forEach(moeda -> total[0] += moeda.converter("Real"));
+		return total[0];
+	}
 }

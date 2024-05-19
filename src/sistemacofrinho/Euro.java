@@ -11,16 +11,15 @@ public class Euro extends Moeda {
 	private static final double TAXA_CAMBIO_EURO_PARA_REAL = 5.55;
 
 	@Override
-	public Moeda converter(String paraQualMoedaSeraConvertida) {
+	public Double converter(String paraQualMoedaSeraConvertida) {
 		if (paraQualMoedaSeraConvertida == "Euro") {
-			return new Dolar(this.getValor() * TAXA_CAMBIO_EURO_PARA_DOLAR);
+			return this.getValor() * TAXA_CAMBIO_EURO_PARA_DOLAR;
 		}
 		else if (paraQualMoedaSeraConvertida == "Real") {
-			return new Real(this.getValor() * TAXA_CAMBIO_EURO_PARA_REAL);
+			return this.getValor() * TAXA_CAMBIO_EURO_PARA_REAL;
 		}
 		else 
-			return this;
-		
+			return this.getValor();
 	}
 
 }

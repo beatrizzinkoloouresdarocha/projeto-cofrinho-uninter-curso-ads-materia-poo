@@ -11,15 +11,15 @@ public class Real extends Moeda {
 	private static final double TAXA_CAMBIO_REAL_PARA_EURO = 0.18;
 
 	@Override
-	public Moeda converter(String paraQualMoedaSeraConvertida) {
+	public Double converter(String paraQualMoedaSeraConvertida) {
 		if (paraQualMoedaSeraConvertida == "Dólar") {
-			return new Dolar(this.getValor() * TAXA_CAMBIO_REAL_PARA_DOLAR);
+			return this.getValor() * TAXA_CAMBIO_REAL_PARA_DOLAR;
 		}
 		else if (paraQualMoedaSeraConvertida == "Euro") {
-			return new Euro(this.getValor() * TAXA_CAMBIO_REAL_PARA_EURO);
+			return this.getValor() * TAXA_CAMBIO_REAL_PARA_EURO;
 		}
 		else 
-			return this;
+			return this.getValor();
 	}
 
 }

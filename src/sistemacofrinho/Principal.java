@@ -1,4 +1,5 @@
 package sistemacofrinho;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Principal {
@@ -22,7 +23,14 @@ public class Principal {
 					System.out.println("Digite a opção desejada: \n 1-Real \n 2-Dólar \n 3-Euro");
 					moedaEscolhida = scanner.nextInt();
 					System.out.println("Digite o valor:");
-					valor = scanner.nextDouble();
+					try {
+						valor = scanner.nextDouble();
+					}
+					catch (InputMismatchException e) {
+						System.out.println("O valor digitado é inválido, digite apenas números." + 
+										  "Utilize a vírgula como separador decimal");
+						continue;
+					}
 					if (moedaEscolhida == 1) {
 						moeda = new Real(valor);
 					}
@@ -50,7 +58,14 @@ public class Principal {
 					System.out.println("Digite a opção desejada: \n 1-Real \n 2-Dólar \n 3-Euro");
 					moedaEscolhida = scanner.nextInt();
 					System.out.println("Digite o valor:");
-					valor = scanner.nextDouble();
+					try {
+						valor = scanner.nextDouble();
+					} 
+					catch (InputMismatchException e){
+						System.out.println("O valor digitado é inválido, digite apenas números." + 
+										  "Utilize a vírgula como separador decimal");
+						continue;
+					}
 					if (moedaEscolhida == 1) {
 						moeda = new Real(valor);
 					}
@@ -78,7 +93,8 @@ public class Principal {
 				System.out.println(listagemMoedas);
 			}
 			else if (opcaoMenuPrincipal == 4) { //calcular total convertido
-				
+				Double totalConvertidoParaReal = cofrinho.totalConvertido();	
+				System.out.println("Total convertido para reais: R$" + totalConvertidoParaReal);
 			}
 			else if (opcaoMenuPrincipal == 0) { //encerrar
 				break;

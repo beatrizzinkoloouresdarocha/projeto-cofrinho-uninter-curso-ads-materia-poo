@@ -59,6 +59,6 @@ public abstract class Moeda {
 		return this.getValoresDeMoedaValidos().contains(this.getValor());
 	};
 	
-	public abstract Moeda converter(String paraQualMoedaSeraConvertida);
+	public abstract Double converter(String paraQualMoedaSeraConvertida);
 	
 }
