@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 
 public class Cofrinho {
-	private ArrayList<Moeda> listaMoedas;
+	private ArrayList<Moeda> listaMoedas = new ArrayList<Moeda>();
 	private Double totalConvertidoParaDolar;
 	private Double totalConvertidoParaEuro;
 	private Double totalConvertidoParaReal;
@@ -52,7 +52,7 @@ public class Cofrinho {
 	
 	public String listagemMoedas() {
 		StringBuilder stringMoedasAgrupadasPorNomeValor = new StringBuilder();
-		stringMoedasAgrupadasPorNomeValor.append("Listagem de moedas");
+		stringMoedasAgrupadasPorNomeValor.append("Listagem de moedas \n\n");
 		listaMoedas = this.getListaMoedas();
 		Map<String, Map<Double, Long>> moedasAgrupadasComContagem = listaMoedas.stream()
 				.collect(Collectors.groupingBy(Moeda::getNomeMoeda, 
