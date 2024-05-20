@@ -1,6 +1,8 @@
 package sistemacofrinho;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Principal {
 
@@ -56,7 +58,16 @@ public class Principal {
 								System.out.println("Moeda adicionada com sucesso!");
 							}
 							else {
-								System.out.println("Erro ao adicionar moeda!");
+								List<Double> moedaValoresValidos = moeda.getValoresDeMoedaValidos();
+								StringBuilder stringDigiteValoresMoedaValidos = new StringBuilder();
+								stringDigiteValoresMoedaValidos.append("Erro ao adicionar moeda!" +
+								"Só podem ser adicionados os seguintes valores de " + 
+								moeda.getNomeMoeda() + ": ");
+								String somenteValoresValidos = moedaValoresValidos.stream()
+		                                  .map(Object::toString)
+		                                  .collect(Collectors.joining(", "));
+								stringDigiteValoresMoedaValidos.append(somenteValoresValidos);
+								System.out.println(stringDigiteValoresMoedaValidos);
 							}
 							break;
 						}
@@ -92,7 +103,7 @@ public class Principal {
 								System.out.println("Moeda removida com sucesso!");
 							}
 							else {
-								System.out.println("Erro ao remover moeda!");
+								System.out.println("Erro ao remover moeda! Nenhuma moeda do valor informado está no cofrinho.");
 							}
 							break;
 						}
