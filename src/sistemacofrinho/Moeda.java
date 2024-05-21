@@ -1,64 +1,59 @@
 package sistemacofrinho;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+
 import java.util.List;
 
 public abstract class Moeda {
+	//classe abstrata contendo os métodos e atributos da moeda 
 	private double valor;
 	private String nomeMoeda;
 	private String simboloMoeda;
-	private List<Double> valoresDeMoedaValidos;
+	private List<Double> valoresDeMoedaValidos; //lista de valores válidos para a moeda 
 
 	public Moeda(double valor, String nomeMoeda, String simboloMoeda, List<Double> valoresDeMoedaValidos) {
+		//método construtor  para inicializar a moeda 
 		this.valor = valor;
 		this.nomeMoeda = nomeMoeda;
 		this.simboloMoeda = simboloMoeda;
 		this.valoresDeMoedaValidos = valoresDeMoedaValidos;
 	}
 	
-	public double getValor() {
+	public double getValor() { //obter valor da moeda 
 		return valor;
 	}
 	
-	public void setValor(double valor) {
+	public void setValor(double valor) { //difinir valor da moeda 
 		this.valor = valor;
 	}
 	
-	public String getNomeMoeda() {
+	public String getNomeMoeda() { //obter nome da moeda 
 		return nomeMoeda;
 	}
 	
-	public void setNomeMoeda(String nomeMoeda) {
+	public void setNomeMoeda(String nomeMoeda) { //definir nome da moeda 
 		this.nomeMoeda = nomeMoeda;
 	}
 	
-	public String getSimboloMoeda() {
+	public String getSimboloMoeda() { //obter simbolo da moeda 
 		return simboloMoeda;
 	}
 
-	public void setSimboloMoeda(String simboloMoeda) {
+	public void setSimboloMoeda(String simboloMoeda) { //difinir simbolo da moeda 
 		this.simboloMoeda = simboloMoeda;
 	}
 	
-	public List<Double> getValoresDeMoedaValidos() {
+	public List<Double> getValoresDeMoedaValidos() { //obter valores válidos da moeda 
 		return valoresDeMoedaValidos;
-	}
-
-	public double retornaValorArredondado() {
-		double valor = this.getValor();
-		BigDecimal bigDecimal = new BigDecimal(Double.toString(valor));
-		bigDecimal.setScale(2, RoundingMode.HALF_UP);
-		return bigDecimal.doubleValue();
 	}
 	
 	public String info() {
-		return this.getSimboloMoeda() + this.getValor();
+		return this.getSimboloMoeda() + this.getValor(); //retornar string formatada com simbolo mais valor da moeda 
 	};
 	
-	public Boolean verificaValorValido() {
+	public Boolean verificaValorValido() { //verifica se o valor da moeda é válida 
 		return this.getValoresDeMoedaValidos().contains(this.getValor());
 	};
 	
-	public abstract Double converter(String paraQualMoedaSeraConvertida);
+	//método abstrato que ira retornar  o valor da moeda convertida para outra moeda 
+	public abstract Double converter(String paraQualMoedaSeraConvertida); 
 	
 }

@@ -3,7 +3,9 @@ package sistemacofrinho;
 import java.util.Arrays;
 
 public class Euro extends Moeda {
-	public Euro(double valor) {
+	//classe implementa a clase abstrata  moeda 
+		///contem métodos e atributos  da moeda Euro  
+	public Euro(double valor) { //método construtor  que inicializa a moeda Euro
 		super(valor, "Euro", "EUR", Arrays.asList(0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1.00, 2.00));
 	}
 
@@ -12,6 +14,7 @@ public class Euro extends Moeda {
 
 	@Override
 	public Double converter(String paraQualMoedaSeraConvertida) {
+		//método para retornar valor convertido para Dólar e Real
 		if (paraQualMoedaSeraConvertida == "Euro") {
 			return this.getValor() * TAXA_CAMBIO_EURO_PARA_DOLAR;
 		}
